@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4f9cff, #4c5ce2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 420px;
+            background: #ffffffee;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 7px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #4c5ce2;
+            box-shadow: 0 0 8px rgba(76,92,226,0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4c5ce2;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #3643b6;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        #msg {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Feedback Form</h2>
+
+    <form id="form">
+        <label>Name:</label>
+        <input type="text" id="name">
+
+        <label>Course:</label>
+        <input type="text" id="course">
+
+        <label>Rating:</label>
+        <select id="rating">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option>
+        </select>
+
+        <label>Comments:</label>
+        <textarea id="comments"></textarea>
+
+        <label>Upload File:</label>
+        <input type="file" id="file">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="msg" style="color: green; font-weight: bold;"></p>
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let course = document.getElementById("course").value;
+    let rating = document.getElementById("rating").value;
+    let comments = document.getElementById("comments").value;
+    let file = document.getElementById("file").files[0];
+
+    if (name === "" || course === "" || rating === "") {
+        alert("Please fill all required fields!");
+        return;
+    }
+
+    console.log("Name:", name);
+    console.log("Course:", course);
+    console.log("Rating:", rating);
+    console.log("Comments:", comments);
+    console.log("Uploaded File:", file ? file.name : "No file selected");
+
+    document.getElementById("msg").innerHTML = "Feedback submitted successfully!";
+});
+</script>
+
+</body>
+</html>
